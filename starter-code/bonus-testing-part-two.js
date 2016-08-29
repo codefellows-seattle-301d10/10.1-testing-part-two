@@ -75,6 +75,7 @@ function theDayTheLionTamerDoneMessedUp(){
       daysWithAverageLessThanFour.push(index + 1);
       console.log(daysWithAverageLessThanFour + ' is the new array that shows the ordinal day on mealsPerDay where the average < 4.');
     }
+    tooHungryDay = daysWithAverageLessThanFour[0];
   });
 }
 
@@ -82,7 +83,7 @@ function theDayTheLionTamerDoneMessedUp(){
 
 getAverageMealsPerDay(mealsPerDay);
 theDayTheLionTamerDoneMessedUp();
-var tooHungryDay = daysWithAverageLessThanFour[0];
+// var tooHungryDay = daysWithAverageLessThanFour[0];
 
 /* TODO: DONE
 Write a second test asserting that tooHungryDay falls within an acceptable answer
