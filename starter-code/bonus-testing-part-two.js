@@ -50,8 +50,8 @@ function testTooHungryNumber(){
 function testTooHungryDay(){
   assert(
     tooHungryDay >= 1 && tooHungryDay <= mealsPerDay.length,
-    'The lion is too hungry after ' + tooHungryDay + ' days...'),
-    'tooHungryDay cannot be a day the lion was not fed';
+    'The lion is too hungry after ' + tooHungryDay + ' days...',
+    'tooHungryDay cannot be a day the lion was not fed');
 }
   /*
    TODO:
