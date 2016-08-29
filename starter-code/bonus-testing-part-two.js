@@ -37,15 +37,22 @@ function assert(expression, successMessage, failureMessage) {
 var mealsPerDay = [5, 4, 3, 6, 2, 4, 3, 4, 5, 1];
 var tooHungryDay;
 
-assert(
+function testTooHungryNumber(){
+  assert(
   typeof(tooHungryDay) === 'number',
   'tooHungryDay should be a number but instead is a data type of ' + typeof(tooHungryDay),
   'The lion appears to be too hungry after ' + tooHungryDay + ' days...');
-
+}
   /* TODO:
      Write a second test asserting that tooHungryDay falls within an acceptable answer
      based on the number of days available in the array. */
 
+function testTooHungryDay(){
+  assert(
+    tooHungryDay >= 1 && tooHungryDay <= mealsPerDay.length,
+    'tooHungryDay cannot be a day the lion was not fed',
+    'Dun Dun Dun, the lion is too hungry after ' + tooHungryDay + ' days...');
+}
   /*
    TODO:
    Cycle through the days in mealsPerDay. At each day, print out the average
@@ -54,3 +61,17 @@ assert(
    pondering protein supplements (the first day the average dips below 4
    meals)
   */
+
+mealsPerDay.reduce(function(acc, cur, index, array){
+  console.log((Number(acc) + Number(cur))/(1 + index), index);
+  mealsSum = (acc + cur);
+  averageMeal = mealsSum/(1 + index);
+  if (averageMeal < 4 && tooHungryDay === undefined){
+    console.log(averageMeal);
+    tooHungryDay = (index +1);
+  }
+  return mealsSum;
+});
+
+testTooHungryNumber();
+testTooHungryDay();
