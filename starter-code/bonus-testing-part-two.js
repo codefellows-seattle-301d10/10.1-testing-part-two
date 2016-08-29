@@ -35,16 +35,11 @@ function assert(expression, successMessage, failureMessage) {
 
   // number of times the new caretaker fed the lion. one array entry per day
 var mealsPerDay = [5, 4, 3, 6, 2, 4, 3, 4, 5, 1];
-var tooHungryDay;
+dailyAverageArray = [];
+daysWithAverageLessThanFour = [];
 
-assert(
-  typeof(tooHungryDay) === 'number',
-  'tooHungryDay should be a number but instead is a data type of ' + typeof(tooHungryDay),
-  'The lion appears to be too hungry after ' + tooHungryDay + ' days...');
 
-  /* TODO:
-     Write a second test asserting that tooHungryDay falls within an acceptable answer
-     based on the number of days available in the array. */
+
 
   /*
    TODO:
@@ -54,3 +49,44 @@ assert(
    pondering protein supplements (the first day the average dips below 4
    meals)
   */
+
+
+function getAverageMealsPerDay(array){
+  var sum = 0;
+
+  array.map(function(currentNumber, index) {
+    sum +=currentNumber;
+    average = (sum) / (index + 1);
+    dailyAverageArray.push(average);
+    console.log('For current number ' + currentNumber + ' at index ' + index + ', the average is ' + average + ' which is ' + sum + ' divided by the index of ' + index + ' plus 1.');
+  });
+}
+
+
+function theDayThatLionTamerBeDead(){
+  dailyAverageArray.map(function(element, index){
+    if (element < 4){
+      console.log(index);
+      daysWithAverageLessThanFour.push(index + 1);
+    }
+  });
+}
+
+
+
+getAverageMealsPerDay(mealsPerDay);
+theDayThatLionTamerBeDead();
+var tooHungryDay = daysWithAverageLessThanFour[0];
+
+/* TODO: DONE
+Write a second test asserting that tooHungryDay falls within an acceptable answer
+based on the number of days available in the array. */
+assert(
+  tooHungryDay <= mealsPerDay.length,
+  'tooHungryDay is equal to ' + tooHungryDay + ' days.',
+  'tooHungryDay should be equal to the number of days when the average meals were less than 4, but instead is: ' + tooHungryDay);
+
+assert(
+  typeof(tooHungryDay) === 'number',
+  'The lion appears to be too hungry after ' + tooHungryDay + ' days...'),
+  'tooHungryDay should be a number and is a data type of ' + typeof(tooHungryDay);
