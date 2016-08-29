@@ -35,6 +35,7 @@ function assert(expression, successMessage, failureMessage) {
 
   // number of times the new caretaker fed the lion. one array entry per day
 var mealsPerDay = [5, 4, 3, 6, 2, 4, 3, 4, 5, 1];
+var tooHungryDay;
 var numMealsPerDayLionNeeds = 4;
 dailyAverageArray = [];
 daysWithAverageLessThanFour = [];
@@ -59,9 +60,10 @@ function getAverageMealsPerDay(array){
 
   return array.map(function(currentNumber, index) {
     sum +=currentNumber;
-    average = (sum) / (index + 1);
+    var daysPassed = index + 1;
+    average = (sum) / (daysPassed);
     dailyAverageArray.push(average);
-    console.log('Index ' + index + ' / Day ' + (index+1) + ': The lion had ' + currentNumber + ' meals for a total of ' + sum + ' meals since Day 1. The average is ' + average + ', which is ' + sum + ' divided by ' + (index+1) + ',which is the current index plus 1');
+    console.log('Index ' + index + ' / Day ' + (daysPassed) + ': The lion had ' + currentNumber + ' meals for a total of ' + sum + ' meals since Day 1. The average is ' + average + ', which is ' + sum + ' divided by ' + (daysPassed) + ',which is the current index plus 1');
 
   });
 }
@@ -70,9 +72,8 @@ function getAverageMealsPerDay(array){
 function theDayTheLionTamerDoneMessedUp(){
   return dailyAverageArray.map(function(element, index){
     if (element < numMealsPerDayLionNeeds){
-      console.log(index, 'is the index in mealsPerDay where average is < 4.');
       daysWithAverageLessThanFour.push(index + 1);
-      console.log(daysWithAverageLessThanFour + ' is the new array that shows the ordinal day where the average < 4.');
+      console.log(daysWithAverageLessThanFour + ' is the new array that shows the ordinal day on mealsPerDay where the average < 4.');
     }
   });
 }
@@ -87,8 +88,8 @@ var tooHungryDay = daysWithAverageLessThanFour[0];
 Write a second test asserting that tooHungryDay falls within an acceptable answer
 based on the number of days available in the array. */
 assert(
-  tooHungryDay <= mealsPerDay.length,
-  'tooHungryDay is equal to ' + tooHungryDay + ' days.',
+  tooHungryDay > 0 && tooHungryDay <= mealsPerDay.length,
+  'tooHungryDay is greater than 0 and equal to ' + tooHungryDay + ' days.',
   'tooHungryDay should be equal to the number of days when the average meals were less than 4, but instead is: ' + tooHungryDay);
 
 assert(
