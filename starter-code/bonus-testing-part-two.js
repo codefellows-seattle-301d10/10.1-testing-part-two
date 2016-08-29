@@ -34,23 +34,49 @@ function assert(expression, successMessage, failureMessage) {
   */
 
   // number of times the new caretaker fed the lion. one array entry per day
-var mealsPerDay = [5, 4, 3, 6, 2, 4, 3, 4, 5, 1];
-var tooHungryDay;
-
-assert(
-  typeof(tooHungryDay) === 'number',
-  'tooHungryDay should be a number but instead is a data type of ' + typeof(tooHungryDay),
-  'The lion appears to be too hungry after ' + tooHungryDay + ' days...');
-
-  /* TODO:
-     Write a second test asserting that tooHungryDay falls within an acceptable answer
-     based on the number of days available in the array. */
 
   /*
-   TODO:
+   TODO DONE:
    Cycle through the days in mealsPerDay. At each day, print out the average
    number of meals/day the lion got since the new caretaker started.
    tooHungryDay should receive the number of days before the lion started
    pondering protein supplements (the first day the average dips below 4
    meals)
   */
+
+
+  /* TODO: DONE
+     Write a second test asserting that tooHungryDay falls within an acceptable answer
+     based on the number of days available in the array. */
+
+
+var mealsPerDay = [5, 3, 3, 6, 2, 4, 3, 4, 5, 1];
+var tooHungryDay = 1;
+
+function lionMealChecker() {
+  mealsPerDay.reduce(function(prev, curr) {
+    console.log('Avg Meal per day: ' + prev);
+    if (prev >= 4 && caretakerEaten === false) {
+      tooHungryDay++;
+      return (prev + curr)/2;
+    }
+    else {
+      caretakerEaten = true;
+      return (prev + curr)/2;
+    }
+  });
+};
+
+var caretakerEaten = false;
+
+lionMealChecker();
+
+assert(
+  typeof(tooHungryDay) === 'number',
+  'The lion appears to be too hungry after ' + tooHungryDay + ' days...'),
+  'tooHungryDay should be a number but instead is a data type of ' + typeof(tooHungryDay);
+
+assert(
+  tooHungryDay < mealsPerDay.length && tooHungryDay >= 0,
+  'The lion appears to be too hungry after ' + tooHungryDay + ' days...',
+  'tooHungryDay should be a number of days relative to the available numbers in the mealsPerDay array. There are ' + (mealsPerDay.length + 1) + 'days feeding took place.');
