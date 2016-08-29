@@ -63,10 +63,13 @@ function testTooHungryDay(){
   */
 
 mealsPerDay.reduce(function(acc, cur, index, array){
-  console.log((Number(acc) + Number(cur))/(1 + index), index);
+  console.log((Number(acc) + Number(cur))/(1 + index), 'Day is: ' + (index + 1));
   mealsSum = (acc + cur);
   averageMeal = mealsSum/(1 + index);
-  if (averageMeal < 4 && tooHungryDay === undefined){
+  if (mealsPerDay[0] < 4) {
+    tooHungryDay = 1;
+  }
+  else if (averageMeal < 4 && tooHungryDay === undefined){
     console.log(averageMeal);
     tooHungryDay = (index +1);
   }
