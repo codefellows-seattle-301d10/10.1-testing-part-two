@@ -59,24 +59,26 @@ function getAverageMealsPerDay(array){
     sum +=currentNumber;
     average = (sum) / (index + 1);
     dailyAverageArray.push(average);
-    console.log('For current number ' + currentNumber + ' at index ' + index + ', the average is ' + average + ' which is ' + sum + ' divided by the index of ' + index + ' plus 1.');
+    console.log('Index ' + index + ' / Day ' + (index+1) + ': The lion had ' + currentNumber + ' meals for a total of ' + sum + ' meals since Day 1. The average is ' + average + ', which is ' + sum + ' divided by ' + (index+1) + ',which is the current index plus 1');
+
   });
 }
 
 
-function theDayThatLionTamerBeDead(){
+function theDayTheLionTamerDoneMessedUp(){
   dailyAverageArray.map(function(element, index){
     if (element < numMealsPerDayLionNeeds){
-      console.log(index);
+      console.log(index, 'is the index in mealsPerDay where average is < 4.');
       daysWithAverageLessThanFour.push(index + 1);
     }
   });
+  console.log(daysWithAverageLessThanFour + ' is the new array that indicates the ordinal day in which the average was < 4');
 }
 
 
 
 getAverageMealsPerDay(mealsPerDay);
-theDayThatLionTamerBeDead();
+theDayTheLionTamerDoneMessedUp();
 var tooHungryDay = daysWithAverageLessThanFour[0];
 
 /* TODO: DONE
