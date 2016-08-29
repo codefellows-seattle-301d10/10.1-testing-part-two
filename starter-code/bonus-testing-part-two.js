@@ -52,10 +52,12 @@ daysWithAverageLessThanFour = [];
   */
 
 
+//I have awesome stackoverflow lookup skills
+//http://stackoverflow.com/questions/26374154/javascript-averages
 function getAverageMealsPerDay(array){
   var sum = 0;
 
-  array.map(function(currentNumber, index) {
+  return array.map(function(currentNumber, index) {
     sum +=currentNumber;
     average = (sum) / (index + 1);
     dailyAverageArray.push(average);
@@ -66,13 +68,13 @@ function getAverageMealsPerDay(array){
 
 
 function theDayTheLionTamerDoneMessedUp(){
-  dailyAverageArray.map(function(element, index){
+  return dailyAverageArray.map(function(element, index){
     if (element < numMealsPerDayLionNeeds){
       console.log(index, 'is the index in mealsPerDay where average is < 4.');
       daysWithAverageLessThanFour.push(index + 1);
+      console.log(daysWithAverageLessThanFour + ' is the new array with index numbers from mealsPerDay that have an average < 4.');
     }
   });
-  console.log(daysWithAverageLessThanFour + ' is the new array that indicates the ordinal day in which the average was < 4');
 }
 
 
