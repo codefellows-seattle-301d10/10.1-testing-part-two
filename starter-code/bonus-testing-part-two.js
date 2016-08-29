@@ -72,7 +72,7 @@ function theDayTheLionTamerDoneMessedUp(){
     if (element < numMealsPerDayLionNeeds){
       console.log(index, 'is the index in mealsPerDay where average is < 4.');
       daysWithAverageLessThanFour.push(index + 1);
-      console.log(daysWithAverageLessThanFour + ' is the new array with index numbers from mealsPerDay that have an average < 4.');
+      console.log(daysWithAverageLessThanFour + ' is the new array that shows the ordinal day where the average < 4.');
     }
   });
 }
