@@ -35,6 +35,7 @@ function assert(expression, successMessage, failureMessage) {
 
   // number of times the new caretaker fed the lion. one array entry per day
 var mealsPerDay = [5, 4, 3, 6, 2, 4, 3, 4, 5, 1];
+var numMealsPerDayLionNeeds = 4;
 dailyAverageArray = [];
 daysWithAverageLessThanFour = [];
 
@@ -65,7 +66,7 @@ function getAverageMealsPerDay(array){
 
 function theDayThatLionTamerBeDead(){
   dailyAverageArray.map(function(element, index){
-    if (element < 4){
+    if (element < numMealsPerDayLionNeeds){
       console.log(index);
       daysWithAverageLessThanFour.push(index + 1);
     }
